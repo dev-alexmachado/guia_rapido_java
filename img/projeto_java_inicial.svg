@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="242" height="234" viewBox="0 0 242 234">
+  <rect width="242" height="234" fill="#0d1117" rx="8"/>
+  <rect x="0" y="0" width="242" height="44" fill="#161b22"/>
+  <rect x="0" y="43" width="242" height="1" fill="#30363d"/>
+  <circle cx="24" cy="22" r="10" fill="#0d9488"/>
+  <text x="25" y="27" font-family="sans-serif" font-weight="bold" font-size="15.5" fill="white" text-anchor="middle" transform="rotate(6, 24, 22)">/`</text>
+  <text x="86.3623046875" y="27" font-family="monospace" font-size="12" fill="#8b949e" text-anchor="start">file-tree</text>
+  
+        <g transform="translate(28, 62)"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" color="#79c0ff" style="color:#79c0ff" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"></path></svg></g>
+        <text x="52" y="74" font-family="monospace" font-size="14" fill="#79c0ff" xml:space="preserve">nome_do_projeto_java/</text>
+      
+  
+      <text x="28" y="96" font-family="monospace" font-size="14" fill="#484f58" xml:space="preserve">├── </text>
+      <g transform="translate(58.7890625, 84)"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" color="#79c0ff" style="color:#79c0ff" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"></path></svg></g>
+      <text x="82.7890625" y="96" font-family="monospace" font-size="14" fill="#79c0ff" xml:space="preserve">.vscode/</text>
+    
+  
+      <text x="28" y="118" font-family="monospace" font-size="14" fill="#484f58" xml:space="preserve">│   └── </text>
+      <g transform="translate(89.578125, 106)"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" color="#ca8a04" style="color:#ca8a04" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 2.984V2h-.09c-.313 0-.616.062-.909.185a2.33 2.33 0 0 0-.775.53 2.23 2.23 0 0 0-.493.753v.001a3.542 3.542 0 0 0-.198.83v.002a6.08 6.08 0 0 0-.024.863c.012.29.018.58.018.869 0 .203-.04.393-.117.572v.001a1.504 1.504 0 0 1-.765.787 1.376 1.376 0 0 1-.558.115H2v.984h.09c.195 0 .38.04.556.121l.001.001c.178.078.329.184.455.318l.002.002c.13.13.233.285.307.465l.001.002c.078.18.117.368.117.566 0 .29-.006.58-.018.869-.012.296-.004.585.024.87v.001c.033.283.099.558.197.824v.001c.106.273.271.524.494.753.223.23.482.407.775.53.293.123.596.185.91.185H6v-.984h-.09c-.2 0-.387-.038-.563-.115a1.613 1.613 0 0 1-.457-.32 1.659 1.659 0 0 1-.309-.467c-.074-.18-.11-.37-.11-.573 0-.228.003-.453.011-.672.008-.228.008-.45 0-.665a4.639 4.639 0 0 0-.055-.64 2.682 2.682 0 0 0-.168-.609A2.284 2.284 0 0 0 3.522 8a2.284 2.284 0 0 0 .738-.955c.08-.192.135-.393.168-.602.033-.21.051-.423.055-.64.008-.22.008-.442 0-.666-.008-.224-.012-.45-.012-.678a1.47 1.47 0 0 1 .877-1.354 1.33 1.33 0 0 1 .563-.121H6zm4 10.032V14h.09c.313 0 .616-.062.909-.185.293-.123.552-.3.775-.53.223-.23.388-.48.493-.753v-.001c.1-.266.165-.543.198-.83v-.002c.028-.28.036-.567.024-.863-.012-.29-.018-.58-.018-.869 0-.203.04-.393.117-.572v-.001a1.502 1.502 0 0 1 .765-.787 1.38 1.38 0 0 1 .558-.115H14v-.984h-.09c-.196 0-.381-.04-.557-.121l-.001-.001a1.376 1.376 0 0 1-.455-.318l-.002-.002a1.415 1.415 0 0 1-.307-.465v-.002a1.405 1.405 0 0 1-.118-.566c0-.29.006-.58.018-.869a6.174 6.174 0 0 0-.024-.87v-.001a3.537 3.537 0 0 0-.197-.824v-.001a2.23 2.23 0 0 0-.494-.753 2.331 2.331 0 0 0-.775-.53 2.325 2.325 0 0 0-.91-.185H10v.984h.09c.2 0 .387.038.562.115.174.082.326.188.457.32.127.134.23.29.309.467.074.18.11.37.11.573 0 .228-.003.452-.011.672-.008.228-.008.45 0 .665.004.222.022.435.055.64.033.214.089.416.168.609a2.285 2.285 0 0 0 .738.955 2.285 2.285 0 0 0-.738.955 2.689 2.689 0 0 0-.168.602c-.033.21-.051.423-.055.64a9.15 9.15 0 0 0 0 .666c.008.224.012.45.012.678a1.471 1.471 0 0 1-.877 1.354 1.33 1.33 0 0 1-.563.121H10z"></path></svg></g>
+      <text x="113.578125" y="118" font-family="monospace" font-size="14" fill="#e6edf3" xml:space="preserve">settings.json</text>
+    
+  
+      <text x="28" y="140" font-family="monospace" font-size="14" fill="#484f58" xml:space="preserve">├── </text>
+      <g transform="translate(58.7890625, 128)"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" color="#79c0ff" style="color:#79c0ff" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"></path></svg></g>
+      <text x="82.7890625" y="140" font-family="monospace" font-size="14" fill="#79c0ff" xml:space="preserve">lib/</text>
+    
+  
+      <text x="28" y="162" font-family="monospace" font-size="14" fill="#484f58" xml:space="preserve">├── </text>
+      <g transform="translate(58.7890625, 150)"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" color="#79c0ff" style="color:#79c0ff" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"></path></svg></g>
+      <text x="82.7890625" y="162" font-family="monospace" font-size="14" fill="#79c0ff" xml:space="preserve">src/</text>
+    
+  
+      <text x="28" y="184" font-family="monospace" font-size="14" fill="#484f58" xml:space="preserve">│   └── </text>
+      <g transform="translate(89.578125, 172)"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" color="#9ca3af" style="color:#9ca3af" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.71 4.29l-3-3L10 1H4L3 2v12l1 1h9l1-1V5l-.29-.71zM13 14H4V2h5v4h4v8zm-3-9V2l3 3h-3z"></path></svg></g>
+      <text x="113.578125" y="184" font-family="monospace" font-size="14" fill="#e6edf3" xml:space="preserve">App.java</text>
+    
+  
+      <text x="28" y="206" font-family="monospace" font-size="14" fill="#484f58" xml:space="preserve">└── </text>
+      <g transform="translate(58.7890625, 194)"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" color="#9ca3af" style="color:#9ca3af" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M6.345 5h2.1v6.533H6.993l.055-5.31-1.774 5.31H4.072l-1.805-5.31c.04.644.06 5.31.06 5.31H1V5h2.156s1.528 4.493 1.577 4.807L6.345 5zm6.71 3.617v-3.5H11.11v3.5H9.166l2.917 2.916L15 8.617h-1.945z"></path></svg></g>
+      <text x="82.7890625" y="206" font-family="monospace" font-size="14" fill="#e6edf3" xml:space="preserve">README.md</text>
+    
+</svg>
