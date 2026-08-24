@@ -271,36 +271,38 @@ import java.util.Scanner;
 
 // classe principal
 public class App {
-    // instancia a classe Scanner
-    Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        // instancia a classe Scanner
+        Scanner sc = new Scanner(System.in);
 
-    // declaração de variáveis
-    String nome;
-    String email;
-    int idade;
-    double altura;
+        // declaração de variáveis
+        String nome;
+        String email;
+        int idade;
+        double altura;
 
-    // entrada de dados
-    System.out.princln("Informe o nome: ");
-    nome = sc.nextLine();
-    System.out.println("Informe a idade: ");
-    idade = sc.nextInt();
-    System.out.println("Informe a altura em metros: ");
-    altura = sc.nextDouble();
+        // entrada de dados
+        System.out.princln("Informe o nome: ");
+        nome = sc.nextLine();
+        System.out.println("Informe a idade: ");
+        idade = sc.nextInt();
+        System.out.println("Informe a altura em metros: ");
+        altura = sc.nextDouble();
 
-    // caso precise informar outra String, é necessário limpar o buffer
-    sc.nextLine();
-    System.out.println("Informe o e-mail: ");
-    email = sc.nextLine();
+        // caso precise informar outra String, é necessário limpar o buffer
+        sc.nextLine();
+        System.out.println("Informe o e-mail: ");
+        email = sc.nextLine();
 
-    // saída de dados
-    System.out.println("Nome: " + nome);
-    System.out.println("Idade: " + idade + " anos");
-    System.out.println("Altura: " + altura + " metros");
-    System.out.println("E-mail: " + email);
+        // saída de dados
+        System.out.println("Nome: " + nome);
+        System.out.println("Idade: " + idade + " anos");
+        System.out.println("Altura: " + altura + " metros");
+        System.out.println("E-mail: " + email);
 
-    // é preciso fechar o objeto
-    sc.close();
+        // é preciso fechar o objeto
+        sc.close();
+    }
 }
 ~~~
 
