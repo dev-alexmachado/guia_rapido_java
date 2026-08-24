@@ -313,17 +313,11 @@ No Java 25, a nova biblioteca `IO` substitui as antigas `System.out` e `System.i
 No Java 25, a nova entrada de dados é feito da seguinte forma:
 ~~~java
 void main() {
-    // declaração de variáveis
-    String nome;
-    String email;
-    int idade;
-    double altura;
-
-    // entrada de dados
-    nome = IO.readln("Informe o nome: ");
-    idade = Integer.parseInt(IO.readln("Informe a idade: "));
-    altura = Double.parseDouble(IO.readln("Informe a altura: ").replace(",", "."));
-    email = IO.readln("Informe o e-mail: ");
+    // declaração de variáveis e entrada de dados
+    String nome = IO.readln("Informe o nome: ");
+    String email = IO.readln("Informe o e-mail: ");
+    int idade = Integer.parseInt(IO.readln("Informe a idade: "));
+    double altura = Double.parseDouble(IO.readln("Informe a altura: ").replace(",", "."));
 
     // saída de dados
     IO.println("Nome: " + nome);
