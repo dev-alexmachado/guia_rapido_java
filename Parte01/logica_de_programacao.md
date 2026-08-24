@@ -15,8 +15,12 @@
 6. [Variáveis](#variáveis)<br>
     6.1 [Exibindo valores de uma variável](#exibindo-valores-de-uma-variável)<br>
     6.2 [Concatenando valores](#concatenando-valores)<br>
-7. [Estruturas de decisão](#estruturas-de-decisão)<br>
-    7.1 [if...else](#ifelse)<br>
+7. [Entrada de dados](#entrada-de-dados)
+8. [Estruturas de decisão](#estruturas-de-decisão)<br>
+    8.1 [if...else](#ifelse)<br>
+    8.2 [Operador ternário](#operador-ternário)<br>
+    8.3 [Else if](#else-if)<br>
+    8.4 [Operadores booleanos](#operadores-booleanos)<br>
 
 ## Algoritmo
 
@@ -243,9 +247,91 @@ void main() {
 }
 ~~~
 
+## Entrada de dados
+
 > [!TIP]
-> Em Java, para fazer uma entrada de dados por parte do usuário, é neessário instanciar uma classe da biblioteca Java, o que se faz necessário aprender Orientação a Objetos para fazer o *input*.<br>
-> Por esse motivo, a entrada de dados só será ensinada na próxima parte do guia, voltado para **Orientação a Objetos**.
+> No Java 25 foi adicionada a biblioteca `IO`, que trabalha tanto com entrada de dados quanto com saída de dados.<br>
+> Até então, era necessário importar a classe `Scanner` e instanciar um objeto dessa classe para fazer uma entrada de dados via console. Veja a seguir a diferença entre um e outro.
+
+Fluxograma:
+~~~mermaid
+flowchart TD
+    A([Início]) --> B@{ shape: manual-input, label: "String nome" }
+    B --> C@{ shape: manual-input, label: "int idade" }
+    C --> D@{ shape: manual-input, label: "double altura" }
+    D --> E@{ shape: manual-input, label: "String email" }
+    E --> F@{ shape: curv-trap, label: "'Nome: ' & nome &<br>'Idade: ' & idade & anos<br>'Altura: ' & altura &metros<br>'E-mail: ' & email &<br>" }
+    F --> G([Fim])
+~~~
+
+Antes do Java 25, a entrada de dados era feita da seguinte forma:
+~~~java
+// importa a classe de entrada de dados
+import java.util.Scanner;
+
+// classe principal
+public class App {
+    // instancia a classe Scanner
+    Scanner sc = new Scanner(System.in);
+
+    // declaração de variáveis
+    String nome;
+    String email;
+    int idade;
+    double altura;
+
+    // entrada de dados
+    System.out.princln("Informe o nome: ");
+    nome = sc.nextLine();
+    System.out.println("Informe a idade: ");
+    idade = sc.nextInt();
+    System.out.println("Informe a altura em metros: ");
+    altura = sc.nextDouble();
+
+    // caso precise informar outra String, é necessário limpar o buffer
+    sc.nextLine();
+    System.out.println("Informe o e-mail: ");
+    email = sc.nextLine();
+
+    // saída de dados
+    System.out.println("Nome: " + nome);
+    System.out.println("Idade: " + idade + " anos");
+    System.out.println("Altura: " + altura + " metros");
+    System.out.println("E-mail: " + email);
+
+    // é preciso fechar o objeto
+    sc.close();
+}
+~~~
+
+No Java 25, a nova biblioteca `IO` substitui as antigas `System.out` e `System.in`, e as mensagens de entrada de dados podem ser informadas diretamente no comando de entrada, que agora são feitas com `IO.readln()`, sem a necessidade do `System.out.println()`.
+
+> [!IMPORTANT]
+> O método `readln()` retorna sempre uma *String*. Caso queira capturar outro tipo de dado, é necessário o comando ***parse*** para converter o tipo de dado. Caso o dado seja um `double`, também pode ser importante o uso do método `replace()` para trocar a vírgula (`,`) informada pelo usuário para o ponto (`.`), necessário para repassar o valor `double`.<br>
+> Também não há a necessidade de limpeza de buffer.
+
+No Java 25, a nova entrada de dados é feito da seguinte forma:
+~~~java
+void main() {
+    // declaração de variáveis
+    String nome;
+    String email;
+    int idade;
+    double altura;
+
+    // entrada de dados
+    nome = IO.readln("Informe o nome: ");
+    idade = Integer.parseInt(IO.readln("Informe a idade: "));
+    altura = Double.parseDouble(IO.readln("Informe a altura: ").replace(",", "."));
+    email = IO.readln("Informe o e-mail: ");
+
+    // saída de dados
+    IO.println("Nome: " + nome);
+    IO.println("Idade: " + idade + " anos");
+    IO.println("Altura: " + altura + " metros");
+    IO.println("E-mail: " + email);
+}
+~~~
 
 ## Estruturas de decisão
 
@@ -259,7 +345,7 @@ Exemplo: para fazer o computador decidir se o usuário é maior ou menor de idad
 ~~~java
 void main() {
     // declaração de variáveis
-    int idade = 41;
+    int idade = Integer.parseInt(IO.readln("Informe a idade: "));
 
     // estrutura de decisão
     if (idade >= 18) {
@@ -286,9 +372,101 @@ flowchart TD
 > **Obs**: caso a estrutura do *if...else* só tenha uma única linha de código, não há a necessidade de chaves (`{}`) para delimitar o bloco:
 > ~~~java
 > void main() {
->    int idade = 41;
+>    int idade = Integer.parseInt(IO.readln("Informe a idade: "));
 >
 >    if (idade >= 18) IO.println("Usuário é maior de idade.");
 >    else IO.println("Usuário é menor de idade.");
 > }
 > ~~~
+
+### Operador ternário
+
+> [!TIP]
+> Caso o bloco de um if...else seja pequeno e tenha apenas uma única linha de comando para cada bloco, você pode trocar pelo Operador Ternário.<br>
+> O Operador Ternário é uma forma simplificada de se fazer o mesmo if...else. Veja no exemplo abaixo como fazer o mesmo programa da maioridade com o operador Ternário:
+~~~java
+void main() {
+    int idade = Integer.parseInt(IO.readln("Informe a idade: "));
+
+    // operador ternário
+    IO.println("Usuário é " + ((idade >= 18) ? "maior" : "menor") + " de idade.");
+}
+~~~
+
+### Else if
+
+Às vezes, você precisa que o computador tenha mais do que verdadeiro ou falso para decidir. É aí onde entra o **else if****: ele adiciona alternativas adicionais ao if...else tradicional. Veja:
+
+Fluxograma:
+~~~mermaid
+flowchart TD
+    A([Início]) --> B@{ shape: manual-input, label: "double nota" }
+    B --> C{nota é maior ou igual a 7?}
+    C -- Sim --> D@{ shape: curv-trap, label: "Aluno está aprovado." }
+    C -- Não --> E{nota é maior ou igual a 5?}
+    E -- Sim --> F@{ shape: curv-trap, label: "Aluno está de recuperação." }
+    E -- Não --> G@{ shape: curv-trap, label: "Aluno está reprovado." }
+    D --> H([Fim])
+    F --> H([Fim])
+    G --> H([Fim])
+~~~
+
+Código-fonte:
+~~~java
+void main() {
+    double nota = Double.parseDouble(IO.readln("Informe a nota: ").replace(",","."));
+
+    if (nota >= 7) IO.println("Aluno está aprovado.");
+    else if (nota >= 5) IO.println("Aluno está de recuperação.");
+    else IO.println("Aluno está reprovado.");
+}
+~~~
+
+### Operadores booleanos
+
+> [!TIP]
+> Às vezes, é interessante (e necessário) incluir duas condicionais em uma estrutura do tipo if...else. Se for o caso, você precisa decidir se as duas condicionais precisam ser verdadeiras ou se somente uma delas pode ser considerada verdadeira. Veja:
+
+Quando duas condicionais precisam ser verdadeiras:
+
+Fluxograma:
+~~~mermaid
+flowchart TD
+    A([Início]) --> B@{ shape: manual-input, label: "double nota" }
+    B --> C{nota >= 0 e nota <= 10?>}
+    C -- Sim --> D@{ shape: curv-trap, label: "Nota recebida com sucesso." }
+    C -- Não --> E@{ shape: curv-trap, label: "Nota informada inválida." }
+    D --> F([Fim])
+    E --> F([Fim])
+~~~
+
+Código-fonte:
+~~~java
+void main() {
+    double nota = Double.parseDouble(IO.readln("Informe a nota: ").replace(",","."));
+
+    IO.println("Nota " + ((nota >=0 && nota <= 10) ? "recebida com sucesso." : "informada inválida."));
+}
+~~~
+
+Quando apenas uma condição precisa ser verdadeira:
+~~~mermaid
+flowchart TD
+    A([Início]) --> B@{ shape: manual-input, label: "int idade" }
+    B --> C@{ shape: manual-input, label: "double peso" }
+    C --> D{idade >= 12 ou peso >= 70}
+    D -- Sim --> E@{ shape: curv-trap, label: "Usuário não tem os requisitos para entrar." }
+    D -- Não --> F@{ shape: curv-trap, label: "Usuário tem a entrada autorizada." }
+    E --> G([Fim])
+    F --> G([Fim])
+~~~
+
+Código-fonte:
+~~~java
+void main() {
+    int idade = Integer.parseInt(IO.readln("Informe a idade: "));
+    double peso = Double.parseDouble(IO.readln("Informe o peso em kg: ").replace(",","."));
+
+    IO.println("Usuário " + ((idade >= 12 || peso >= 70) ? "não tem os requisitos para entrar." : "tem a entrada autorizada."));
+}
+~~~
