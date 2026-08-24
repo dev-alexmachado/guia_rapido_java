@@ -463,6 +463,67 @@ void main() {
     int idade = Integer.parseInt(IO.readln("Informe a idade: "));
     double peso = Double.parseDouble(IO.readln("Informe o peso em kg: ").replace(",","."));
 
-    IO.println("Usuário " + ((idade >= 12 || peso >= 70) ? "não tem os requisitos para entrar." : "tem a entrada autorizada."));
+    IO.println("Usuário " + (
+        (idade >= 12 || peso >= 70) ? 
+        "não tem os requisitos para entrar." : 
+        "tem a entrada autorizada."
+    ));
+}
+~~~
+
+### Switch...case
+
+Em alguns casos, o if...else pode ser substituido por uma solução melhor e mais elegante: o switch...case. Ele é usado para analisar valores exatos, e quando a estrutura pede mais de duas saídas possíveis.
+
+Exemplo:
+
+Fluxograma:
+~~~mermaid
+flowchart TD
+    A([Início]) --> B@{ shape: manual-input, label: "int n1" }
+    B --> C@{ shape: manual-input, label: "int n2" }
+    C --> D@{ shape: manual-input, label: "String oepracao" }
+    D --> E{escolha operacao}
+    E -- caso soma --> F[n1+n2]
+    E -- caso subtração --> G[n1-n2]
+    E -- caso multiplicação --> H[n1*n2]
+    E -- caso divisão --> I[n1/n2]
+    E -- default --> J@{ shape: curv-trap, label: "Operação inválida." }
+    F --> K@{ shape: curv-trap, label: "Resutlado." }
+    G --> K@{ shape: curv-trap, label: "Resutlado." }
+    H --> K@{ shape: curv-trap, label: "Resutlado." }
+    I --> K@{ shape: curv-trap, label: "Resutlado." }
+    K --> L([Fim])
+    J --> L([Fim])
+~~~
+
+Código-fonte:
+~~~java
+void main() {
+    int n1 = Integer.parseInt(IO.readln("Informe o valor de um número inteiro: "))
+    int n2 = Integer.parseInt(IO.readln("Informe o valor de outro número inteiro: "))
+
+    double resultado = 0;
+
+    String operacao = IO.readln("Informe o tipo de operação que deseja fazer: ")
+
+    switch (operacao) {
+        case "soma":
+            resultado = n1+n2;
+            break;
+        case "subtração":
+            resultado = n1-n2;
+            break;
+        case "multiplicação":
+            resultado = n1*n2;
+            break;
+        case "divisão":
+            resultado = n1/n2;
+            break;
+        default:
+            IO.println("Operação inválida.");
+    }
+
+    IO.println("Resultado: " + resultado);
 }
 ~~~
