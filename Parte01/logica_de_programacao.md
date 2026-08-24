@@ -21,6 +21,7 @@
     8.2 [Operador ternário](#operador-ternário)<br>
     8.3 [Else if](#else-if)<br>
     8.4 [Operadores booleanos](#operadores-booleanos)<br>
+    8.5 [Switch...case](#switchcase)<br>
 
 ## Algoritmo
 

@@ -5,7 +5,7 @@
 </p>
 
 >[!IMPORTANT]
-> Esse tutorial é destinado para máquinas com o Sistema Operacional Windows 10 ou superior.
+> Esse tutorial é destinado para máquinas com o Sistema Operacional Windows 10 ou superior e com o JDK 25 ou superior.
 
 ## Sumário
 
