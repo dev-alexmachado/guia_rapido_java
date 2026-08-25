@@ -22,6 +22,11 @@
     8.3 [Else if](#else-if)<br>
     8.4 [Operadores booleanos](#operadores-booleanos)<br>
     8.5 [Switch...case](#switchcase)<br>
+9. [Tratamento de Exceção](#tratamento-de-exceção)
+10. [Laço de repetição](#laço-de-repetição)<br>
+    10.1 [while](#while)<br>
+    10.2 [do...while](#dowhile)<br>
+    10.3 [for](#for)<br>
 
 ## Algoritmo
 
@@ -528,3 +533,138 @@ void main() {
     IO.println("Resultado: " + resultado);
 }
 ~~~
+
+## Tratamento de Exceção
+
+O tratamento de exceção é uma estrutura onde o computador analisa um bloco, e caso ele dê algum tipo de erro, interrompe esse bloco e executa outro bloco. Serve para evvitar que o programa crashe em caso de algum erro. É um bloco utilizado para fazer debug do seu código. Sua estrutura é formada pelo try...catch.
+
+> [!NOTE]
+> Debug é o nome dado para correções de erros do seu código-fonte.
+
+Exemplo:
+~~~java
+void main() {
+    try {
+        int numero_inteiro = Integer.parseInt(IO.readln("Informe um número inteiro: "));
+        IO.println("Número informado é " + numero_inteiro + ".");
+    }
+    catch(Exception e) {
+        IO.println("O valor informado não é válido." + e);
+    }
+}
+~~~
+
+Fluxograma:
+~~~mermaid
+flowchart TD
+    A([Início]) --> B{try}
+    B -- Sucesso --> C@{ shape: manual-input, label: "int numero_inteiro" }
+    C --> D@{ shape: curv-trap, label: "'Número informado é ' & numero_informado & '.'" }
+    B -- Exceção --> E@{ shape: curv-trap, label: "O valor informado não é válido." }
+    D --> F([Fim])
+    E --> F([Fim])
+~~~
+
+## Laço de repetição
+
+Um laço de repetição, também chamado de loop, é uma estrutura que repete várias vezes o mesmo algoritmo, sem a necessidade de reescrever várias vezes o mesmo comando.
+
+### while
+
+O laço de repetição mais básico é o while. Ele executa um algoritmo enquanto uma determinada condição for verdadeira. Veja um exemplo:
+~~~java
+void main() {
+    int n = Integer.parseInt(IO.readln("Informe um número inteiro: "));
+
+    // subtrai o valor por 1, exibe na tela e repete enquanto for maior que 0
+    while (n > 0) {
+        n--;
+        IO.println(n);
+    }
+}
+~~~
+
+Fluxograma:
+~~~mermaid
+graph TD
+    A([Início]) --> B@{ shape: manual-input, label: "int n" }
+    B --> C{n > 0?}
+    C -- Sim --> D[n = n - 1]
+    D --> E@{ shape: curv-trap, label: "n" }
+    E --> C
+    C -- Não --> F([Fim])
+~~~
+
+> [!CAUTION]
+> No algoritmo acima, o comando n -= 1 existe para que o número vá decrescendo até que a condição se torne falsa. Sem isso, o loop irá se repetir eternamente, sem diminuir o valor de n, até que o programa consuma 100% da memória RAM do computador e trave totalmente, impossibilitando seu uso, e ocasionando defeitos tanto de software quanto de hardware no PC. Portanto, use o while com muito cuidado.
+
+### do...while
+
+O `do...while` funciona de forma parecida com o `while`. A diferença é que neste caso ele sempre irá executar o bloco do algoritmo, pelo menos uma vez. A condicional existe para decidir se vai haver repetição ou não.
+
+Exemplo:
+~~~java
+void main() {
+    String nome;
+    String email;
+    String cpf;
+    String continuar;
+
+    do {
+        nome = IO.readln("Informe o nome: ");
+        email = IO.readln("Informe o e-mail: ");
+        cpf = IO.readln("Informe o CPF: ");
+
+        IO.println("Nome: " + nome);
+        IO.println("E-mail: " + email);
+        IO.println("CPF: " + cpf);
+
+        continuar = IO.readln("Inserir dados de outro usuário? [y] para sim ou Enter para encerrar");
+
+    } while(continuar.equals("y"));
+}
+~~~
+
+Fluxograma do programa acima:
+~~~mermaid
+flowchart TD
+    A([Início]) --> B@{ shape: manual-input, label: "String nome" }
+    B --> C@{ shape: manual-input, label: "String email" }
+    C --> D@{ shape: manual-input, label: "String cpf" }
+    D --> E@{ shape: curv-trap, label: "'Nome: ' & nome & '.<br>E-mail: ' & email & '.<br>CPF: ' & cpf & '.'" }
+    E --> F@{ shape: manual-input, label: "String continuar" }
+    F --> G{continuar?}
+    G -- y --> B
+    G -- default --> H([Fim])
+~~~
+
+### for
+
+O laço for é um tipo de laço que obrigatoriamente executa um número finito de vezes, nunca entrando em loop infinito. Isso acontece pois o laço precisa de um contador informado já na declaração, sem a necessidade de inserirmos um no bloco. Exemplo:
+~~~java
+void main() {
+    for (n = 0; n < 5; n++) {
+        IO.println(n);
+    }
+}
+~~~
+
+Fluxograma:
+~~~mermaid
+graph TD
+    A([Início]) --> B[n = 0]
+    B --> C{n < 5?}
+    C -- Sim --> D[/print: n/]
+    D --> E[n = n + 1]
+    E --> C
+    C -- Não --> F([Fim])
+
+~~~
+
+> [!IMPORTANT]
+> Esse programa irá exibir a numeração de 0 a 4, pois o computador sempre começa a contagem do zero (0), a não ser que você indique a partir de qual número ele deva começar a contagem.
+
+---
+
+- [Voltar ao início](#sumário)
+- [Voltar ao índice do Guia Rápido de Javav](https://github.com/dev-alexmachado/guia_rapido_java)
