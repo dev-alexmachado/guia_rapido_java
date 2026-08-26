@@ -18,6 +18,10 @@
     2.8 [Exemplo de estrutura de packages](#exemplo-de-estrutura-de-packages)<br>
 3. [Construtor](#construtor)
 4. [Herança/Generalização](#herançageneralização)
+5. [Polimorfismo](#polimorfismo)
+6. [Abstração](#abstração)
+7. [Encapsulamento](#encapsulamento)<br>
+    7.1 [Modificadores de acesso](#modificadores-de-acesso)<br>
 
 
 ## Classes Java
@@ -295,7 +299,7 @@ Quando nenhum modificador de acesso é informado, o membro ou a classe tem acess
 ~~~java
 package modelo;
 
-class CadastroInterno {
+public class CadastroInterno {
     public String codigo;
 }
 ~~~
@@ -488,6 +492,31 @@ src/
 ```
 [![Herança](../img/heranca.svg)](https://www.readmecodegen.com/file-tree/create-folder-structure-online)
 
+#### Diagrama de Classes
+~~~mermaid
+classDiagram
+    class Pessoa {
+        +String email;
+        +String telefone;
+        +Pessoa() void
+        +cumprimentar(String nome) String
+    }
+
+    class PessoaFisica {
+        +String nome;
+        +String cpf;
+    }
+
+    class PessoaJuridica {
+        +String razaoSocial;
+        +String nomeFantasia;
+        +String cnpj;
+    }
+
+    Pessoa <|-- PessoaFisica
+    Pessoa <|-- PessoaJuridica
+~~~
+
 #### Pessoa.java
 ~~~java
 package br.com.models;
@@ -560,5 +589,265 @@ void main() {
 
     usuario.cumprimentar(empresa.nomeFantasia);
     empresa.cumprimentar(usuario.nome);
+}
+~~~
+
+> [!NOTE]
+> Em orientação a objetos, há o que chamamos de **Os 4 pilares da Orientação a Objetos**. São eles:
+> - Herança ou generalização;
+> - Polimorfismo;
+> - Abstração;
+> - Encapsulamento.
+
+## Polimorfismo
+
+Em Orientação a Objetos, um Polimorfismo acontece quando um método existe em duas classes diferentes, mas se comportam de maneiras totalmente diferentes.
+
+Vamos pegar o exemplo mostrado acima em Herança e adicionar um método na superclasse chamado `exibirDados()`:
+
+#### Diagrama de Classes
+~~~mermaid
+classDiagram
+    class Pessoa {
+        +String email;
+        +String telefone;
+        +Pessoa() void
+        +cumprimentar(String nome) String
+        +exibirDados() void
+    }
+
+    class PessoaFisica {
+        +String nome;
+        +String cpf;
+    }
+
+    class PessoaJuridica {
+        +String razaoSocial;
+        +String nomeFantasia;
+        +String cnpj;
+    }
+
+    Pessoa <|-- PessoaFisica
+    Pessoa <|-- PessoaJuridica
+~~~
+
+#### Código-fonte classe Pessoa.java
+~~~java
+package br.com.models;
+
+public class Pessoa {
+    public String email;
+    public String telefone;
+
+    public Pessoa() {}
+
+    public cumprimentar(String nome) {
+        return "Olá " + nome + ", prazer em conhecer!";
+    }
+
+    public void exibirDados() {
+        IO.println("Nome: " + this.nome);
+        IO.println("E-mail: " + this.email);
+    }
+}
+~~~
+
+Nesse caso, as subclasses `PessoaFisica` e `PessoaJuridica` já estão herdando o novo método. Mas eu preciso que `exibirDados()` mostre os atributos exclusivos de cada classe, e para isso, é necessário alterar o comportamento do método, o que define justamente o **polimorfismo**.
+
+#### Código-fonte classe PessoaFisica.java
+~~~java
+package br.com.models;
+
+// classe que herda de Pessoa
+public class PessoaFisica extends Pessoa {
+    public String nome;
+    public String cpf;
+
+    public void exibirDados() {
+        IO.println("Nome: " + this.nome);
+        IO.println("CPF: " + this.cpf);
+        super.exibirDados();
+    }
+}
+~~~
+
+#### Código-fonte classe PessoaJuridica.java
+~~~java
+package br.com.models;
+
+// classe que herda de Pessoa
+public class PessoaJuridica extends Pessoa {
+    public String nomeFantasia;
+    public String razaoSoccial;
+    public String cnpj;
+
+    public void exibirDados() {
+        IO.println("Nome da empresa: " + this.nomeFantasia);
+        IO.println("Razão Social da empresa: " + this.razaoSocial);
+        IO.println("CNPJ: " + this.cnpj);
+        super.exibirDados();
+    }
+}
+~~~
+
+Agora que alteramos o comportamento do método `exibirDados()`, ele irá fazer execuções diferentes em cada objeto no arquivo principal:
+
+#### App.java
+~~~java
+import br.com.models.PessoaFisica;
+import br.com.models.PessoaJuridica;
+
+void main() {
+    PessoaFisica usuario = PessoaFisica();
+    PessoaJuridica empresa = PessoaJuridica();
+
+    usuario.nome = IO.readln("Informe o nome do usuário: ");
+    usuario.cpf = IO.readln("Informe o CPF do usuário: ");
+    usuario.email = IO.readln("Informe o e-amil do usuário: ");
+    usuario.telefone = IO.readln("Informe o telefone do usuário: ");
+
+    empresa.razaoSocial = IO.readln("Informe a razão social da empresa: ");
+    empresa.nomeFantasia = IO.readln("Informe o nome da empresa: ");
+    empresa.cnpj = IO.readln("Informe o cnpj da empresa: ");
+    empresa.email = IO.readln("Informe o e-mail da empresa: ");
+    empresa.telefone = IO.readln("Informe o telefone da empresa: ");
+
+    usuario.exibirDados();
+    empresa.exibirDados();
+}
+~~~
+
+## Abstração
+
+O conceito de abstração se refere a uma classe que não pode ser instanciada. Se, por exemplo, não desejamos que uma classe seja instanciada, pois está fazendo o papel de uma superclasse para outras subclasses, podemos tornar a superclasse uma classe abstrata. Isso fará com que a regra de negócio seja respeitada, e a integridade do sistema não seja ferida.
+
+Veja no exemplo abaixo:
+
+#### Diagrama de Classes
+~~~mermaid
+classDiagram
+    class Pessoa {
+        <<abstract>>
+        +String email;
+        +String telefone;
+        +Pessoa() void
+        +exibirDados() void
+    }
+
+    class PessoaFisica {
+        +String nome;
+        +String cpf;
+    }
+
+    class PessoaJuridica {
+        +String razaoSocial;
+        +String nomeFantasia;
+        +String cnpj;
+    }
+
+    Pessoa <|-- PessoaFisica
+    Pessoa <|-- PessoaJuridica
+~~~
+
+#### Código-fonte Pessoa.java
+~~~java
+package br.com.models;
+
+public abstract class Pessoa {
+    public String email;
+    public String telefone;
+
+    public Pessoa() {}
+
+    public void exibirDados() {
+        IO.println("Nome: " + this.nome);
+        IO.println("E-mail: " + this.email);
+    }
+}
+~~~
+
+> [!TIP]
+> para este exemplo, a única mudança está na classe abstrata, e portanto não será mostrado o código-fonte de `PessoaFisica`, `PessoaJuridica` e `App.java`, já que são os mesmos do exemplo anterior.
+
+## Encapsulamento
+
+Encapsulamento trata-se de esconder elementos que você não deseja que outros códigos fora da classe não vejam. Geralmente estamos falando de atributos da classe que não devem ser acessados de forma direta, então proibimos o acesso por qualquer outra classe que não seja ela mesma, e o acesso passa a ser feito através dos métodos de acesso `get` e `set`.
+
+### Modificadores de acesso
+
+Os modificadores de acesso são o que define quem e como vão ser feitos os acessos. Os modificadores de acesso reconhecidos pelo Java são:
+- `+` | `public`: visível e acessível para todos
+- `#` | `protected`: vísivel e acessível para a classe e suas subclasses
+- `~` | `package-private`: visível e acessível para qualquer classe dentro do seu próprio `package`
+- `-` | `private`: visivel e acessível apenas para a própria classe, e invisível e incessível para todo o restante do programa
+
+#### Diagrama de Classes
+
+~~~mermaid
+classDiagram
+    class Pessoa {
+        -String nome;
+        -int idade;
+        -double altura;
+        +getNome() String
+        +setNome(String nome) void
+        +getIdade() int
+        +setIdade(int idade) void
+        +getAltura() double
+        +setAltura(double altura) void
+    }
+~~~
+
+#### Código-fonte Pessoa.java
+~~~java
+package br.com.models;
+
+public class Pessoa {
+    private String nome;
+    private int idade;
+    private double altura;
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    public int getidade() {
+        return this.idade;
+    }
+
+    public void setidade(int idade) {
+        this.idade = idade;
+    }
+    public double getaltura() {
+        return this.altura;
+    }
+
+    public void setaltura(double altura) {
+        this.altura = altura;
+    }
+
+}
+~~~
+
+#### Código-fonte App.java
+~~~java
+import br.com.models.Pessoa;
+
+void main() {
+    Pessoa usuario = new Pessoa();
+
+    // entrada de dados
+    usuario.setNome(IO.readln("Informe o nome: "));
+    usuario.setIdade(Integer.parseInt(IO.readln("Informe a idade: ")));
+    usuario.setAltura(Double.parseDouble(IO.readln("Informe a altura: ")));
+
+    // saída de dados
+    IO.println("Nome: " + usuario.getNome());
+    IO.println("Idade: " + usuario.getIdade() + " anos");
+    IO.println("Altura: " + usuario.getAltura() + " metros");
 }
 ~~~
