@@ -6,6 +6,7 @@
 
 1. [Classes Java](#classes-java)<br>
     1.1 [Objetos](#objetos)<br>
+    1.2 [Métodos](#métodos)<br>
 2. [Pacotes (packages)](#pacotes-packages)<br>
     2.1 [Declarando um pacote](#declarando-um-pacote)<br>
     2.2 [Pacote e estrutura de pastas](#pacote-e-estrutura-de-pastas)<br>
@@ -82,6 +83,119 @@ void main() {
 
     // execução do método
     usuario.cumprimentar();
+}
+~~~
+
+### Métodos
+
+Os métodos representam ações das classes/objetos. Elas podem receber parâmetros/argumentos, e também podem ou não retornarem valores.
+
+>[!WARNING]
+> Caso o método retorne algum valor, é necessário informar que tipo de dado ele retorna.
+
+Exemplo:
+
+#### Método sem retorno e sem argumento
+
+Fluxograma:
+~~~mermaid
+classDiagram
+    class Pessoa {
+        +cumprimentar() void
+    }
+~~~
+
+Código-fonte da classe:
+~~~java
+public class Pesssoa {
+    public void cumprimentar() {
+        IO.println("Olá, como vai?");
+    }
+}
+~~~
+
+Código-fonte do objeto:
+~~~java
+void main() {
+    Pessoa usuario = new Pessoa();
+
+    // chamando o método
+    usuario.cumprimentar();
+}
+~~~
+
+#### Método sem retorno e com argumento
+
+Fluxograma:
+~~~mermaid
+classDiagram
+    class Pessoa {
+        +cumprimentar(String nome) void
+    }
+~~~
+
+Código-fonte da classe:
+~~~java
+public class Pesssoa {
+    public void cumprimentar(String nome) {
+        IO.println("Olá " + nome + ", como vai?");
+    }
+}
+~~~
+
+Código-fonte do objeto:
+~~~java
+void main() {
+    Pessoa usuario = new Pessoa();
+
+    String nome = "Alex";
+
+    // chamando o método
+    usuario.cumprimentar(nome);
+}
+~~~
+
+#### Método com retorno e com argumento
+
+Fluxograma:
+~~~mermaid
+classDiagram
+    class Pessoa {
+        +cumprimentar(String nome) String
+    }
+~~~
+
+Código-fonte da classe:
+~~~java
+public class Pessoa {
+    public String cumprimentar(String nome) {
+        return "Olá " + nome + ", como vai?";
+    }
+}
+~~~
+
+Código-fonte do objeto:
+~~~java
+void main() {
+    Pessoa usuario = new Pessoa();
+
+    String nome = "Alex";
+
+    // chamando o método
+    IO.println(usuario.cumprimentar(nome));
+}
+~~~
+
+Ou:
+~~~java
+void main() {
+    Pessoa usuario = new Pessoa();
+
+    String nome = "Alex";
+
+    // chamando o método
+    saida = usuario.cumprimentar(nome);
+    IO.println(saida);
 }
 ~~~
 
