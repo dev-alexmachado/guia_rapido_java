@@ -10,3 +10,4 @@
 ## Sumário
 
 1. [Lógica de Programação](https://github.com/dev-alexmachado/guia_rapido_java/blob/main/Parte01/logica_de_programacao.md)
+2. [Orientação a Objetos](https://github.com/dev-alexmachado/guia_rapido_java/blob/main/Parte02/orientacao-a-objetos.md)

@@ -1,5 +1,7 @@
 # Lógica de Programação Aplicada a Java
 
+[Clique aqui para retornar](https://github.com/dev-alexmachado/guia_rapido_java)
+
 ## Sumário
 
 1. [Algoritmo](#algoritmo)
@@ -399,7 +401,7 @@ void main() {
 
 Às vezes, você precisa que o computador tenha mais do que verdadeiro ou falso para decidir. É aí onde entra o **else if****: ele adiciona alternativas adicionais ao if...else tradicional. Veja:
 
-Fluxograma:
+#### Fluxograma
 ~~~mermaid
 flowchart TD
     A([Início]) --> B@{ shape: manual-input, label: "double nota" }
@@ -413,7 +415,7 @@ flowchart TD
     G --> H([Fim])
 ~~~
 
-Código-fonte:
+#### Código-fonte
 ~~~java
 void main() {
     double nota = Double.parseDouble(IO.readln("Informe a nota: ").replace(",","."));
@@ -431,7 +433,7 @@ void main() {
 
 Quando duas condicionais precisam ser verdadeiras:
 
-Fluxograma:
+#### Fluxograma
 ~~~mermaid
 flowchart TD
     A([Início]) --> B@{ shape: manual-input, label: "double nota" }
@@ -442,7 +444,7 @@ flowchart TD
     E --> F([Fim])
 ~~~
 
-Código-fonte:
+#### Código-fonte
 ~~~java
 void main() {
     double nota = Double.parseDouble(IO.readln("Informe a nota: ").replace(",","."));
@@ -452,6 +454,8 @@ void main() {
 ~~~
 
 Quando apenas uma condição precisa ser verdadeira:
+
+#### Fluxograma
 ~~~mermaid
 flowchart TD
     A([Início]) --> B@{ shape: manual-input, label: "int idade" }
@@ -463,7 +467,7 @@ flowchart TD
     F --> G([Fim])
 ~~~
 
-Código-fonte:
+#### Código-fonte
 ~~~java
 void main() {
     int idade = Integer.parseInt(IO.readln("Informe a idade: "));
@@ -483,7 +487,7 @@ Em alguns casos, o if...else pode ser substituido por uma solução melhor e mai
 
 Exemplo:
 
-Fluxograma:
+#### Fluxograma
 ~~~mermaid
 flowchart TD
     A([Início]) --> B@{ shape: manual-input, label: "int n1" }
@@ -503,7 +507,7 @@ flowchart TD
     J --> L([Fim])
 ~~~
 
-Código-fonte:
+#### Código-fonte
 ~~~java
 void main() {
     int n1 = Integer.parseInt(IO.readln("Informe o valor de um número inteiro: "))
@@ -542,6 +546,8 @@ O tratamento de exceção é uma estrutura onde o computador analisa um bloco, e
 > Debug é o nome dado para correções de erros do seu código-fonte.
 
 Exemplo:
+
+#### Código-fonte
 ~~~java
 void main() {
     try {
@@ -554,7 +560,7 @@ void main() {
 }
 ~~~
 
-Fluxograma:
+#### Fluxograma
 ~~~mermaid
 flowchart TD
     A([Início]) --> B{try}
@@ -572,6 +578,8 @@ Um laço de repetição, também chamado de loop, é uma estrutura que repete v�
 ### while
 
 O laço de repetição mais básico é o while. Ele executa um algoritmo enquanto uma determinada condição for verdadeira. Veja um exemplo:
+
+#### Código-fonte
 ~~~java
 void main() {
     int n = Integer.parseInt(IO.readln("Informe um número inteiro: "));
@@ -584,7 +592,7 @@ void main() {
 }
 ~~~
 
-Fluxograma:
+#### Fluxograma
 ~~~mermaid
 graph TD
     A([Início]) --> B@{ shape: manual-input, label: "int n" }
@@ -603,6 +611,8 @@ graph TD
 O `do...while` funciona de forma parecida com o `while`. A diferença é que neste caso ele sempre irá executar o bloco do algoritmo, pelo menos uma vez. A condicional existe para decidir se vai haver repetição ou não.
 
 Exemplo:
+
+#### Código-fonte
 ~~~java
 void main() {
     String nome;
@@ -625,7 +635,7 @@ void main() {
 }
 ~~~
 
-Fluxograma do programa acima:
+#### Fluxograma do programa acima
 ~~~mermaid
 flowchart TD
     A([Início]) --> B@{ shape: manual-input, label: "String nome" }
@@ -641,6 +651,8 @@ flowchart TD
 ### for
 
 O laço for é um tipo de laço que obrigatoriamente executa um número finito de vezes, nunca entrando em loop infinito. Isso acontece pois o laço precisa de um contador informado já na declaração, sem a necessidade de inserirmos um no bloco. Exemplo:
+
+#### Código-fonte
 ~~~java
 void main() {
     for (n = 0; n < 5; n++) {
@@ -649,7 +661,7 @@ void main() {
 }
 ~~~
 
-Fluxograma:
+#### Fluxograma
 ~~~mermaid
 graph TD
     A([Início]) --> B[n = 0]
@@ -667,4 +679,4 @@ graph TD
 ---
 
 - [Voltar ao início](#sumário)
-- [Voltar ao índice do Guia Rápido de Javav](https://github.com/dev-alexmachado/guia_rapido_java)
+- [Voltar ao índice do Guia Rápido de Java](https://github.com/dev-alexmachado/guia_rapido_java)
