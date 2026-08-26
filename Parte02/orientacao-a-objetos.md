@@ -13,7 +13,10 @@
     2.4 [Nome completo da classe](#nome-completo-da-classe)<br>
     2.5 [Pacote padrão](#pacote-padrão)<br>
     2.6 [Pacotes e controle de acesso](#pacotes-e-controle-de-acesso)<br>
-    2.7 [Exemplo de estrutura de packages](#exemplo-de-estrutura-de-packages)<br>
+    2.7 [Criar um novo package no VSCode](#criar-um-novo-package-no-vscode)<br>
+    2.8 [Exemplo de estrutura de packages](#exemplo-de-estrutura-de-packages)<br>
+3. [Construtor](#construtor)
+4. [Herança/Generalização](#herançageneralização)
 
 
 ## Classes Java
@@ -42,19 +45,22 @@ classDiagram
 
 ~~~java
 public class Pessoa {
-    // atributo
+    // atributos
     public String nome;
     public int idade;
     public double altura;
 
     // método
     public void cumprimentar() {
-        IO.print("Olá, meu nome é " + nome);
-        IO.print(", tenho " + idade + " anos");
-        IO.print(", e " + altura + " metros de altura.");
+        IO.print("Olá, meu nome é " + this.nome);
+        IO.print(", tenho " + this.idade + " anos");
+        IO.print(", e " + this.altura + " metros de altura.");
     }
 }
 ~~~
+
+> [!IMPORTANT]
+> Em Java, sempre use a palavra reservada `this` antes dos atributos para chamá-los dentro dos métodos.
 
 ### Objetos
 
@@ -73,6 +79,9 @@ void main() {
     IO.println("Nome: " + nome);
     IO.println("Idade: " + idade + " anos");
     IO.println("Altura: " + altura + " metros");
+
+    // execução do método
+    usuario.cumprimentar();
 }
 ~~~
 
@@ -219,3 +228,223 @@ projeto-java/
 
 > [!WARNING]
 > Dentro da pasta `bin`, tem conteúdo necessário para o funcionamento do seu programa, mas não mexemos nela. A única coisa que importa para o desenvolvedor é o conteúdo da pasta `src/`.
+
+Exemplo do código-fonte da estrutura acima:
+
+#### Classe Pessoa
+
+~~~java
+// declara o package
+package br.com.models;
+
+public class Pessoa {
+    public String nome;
+    public int idade;
+
+    public void exibirDados() {
+        IO.println("Nome: " + this.nome);
+        IO.println("Idade: " + this.idade);
+    }
+}
+~~~
+
+#### App.java
+~~~java
+// importa a classe Pessoa
+import br.com.models.Pessoa;
+
+void main () {
+    Pessoa usuario = new Pessoa();
+
+    usuario.nome = IO.readln("Informe o nome: ");
+    usuario.idade = IO.readln("Informe a idade: ");
+
+    usuario.exibirNome();
+}
+~~~
+
+## Construtor
+
+Um construtor é um método obrigatório responsável pela instância da classe no algoritmo principal, ou seja, é ele quem cria os objetos do programa. Para criar um construtor, ele deve ser obrigatoriamente público, e deve ter o nome da classe.
+
+Exemplo:
+
+#### Construtor padrão (vazio)
+
+~~~java
+package br.com.models;
+
+public class Pessoa {
+    public String nome;
+    public int idade;
+
+    // construtor
+    public Pessoa() {
+        // construtor vazio
+    }
+}
+~~~
+
+#### Construtor que inicializa os atributos
+
+~~~java
+package br.com.models;
+
+public class Pessoa {
+    public String nome;
+    public int idade;
+
+    // construtor
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+}
+~~~
+
+> [!WARNING]
+> Caso use o construtor para inicializar os atributos, é necessário atribuir valores aos atributos durante a instância.
+
+#### Instanciando uma classe com construtor cheio
+
+~~~java
+import br.com.models;
+
+void main() {
+    Pessoa usuario = new Pessoa("Alex", 41);
+
+    IO.println("Nome: " + usuario.nome);
+    IO.println("Idade: " + usuario.idade);
+}
+~~~
+
+> [!TIP]
+> Em Java, é possível ter mais de um construtor em uma classe.
+
+#### Classse com mais de um construtor
+
+~~~java
+package br.com.models;
+
+public class Pessoa {
+    public String nome;
+    public int idade;
+
+    public Pessoa() {
+        // construtor vazio
+    }
+
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+}
+~~~
+
+#### Instanciando a classe com mais de um construtor
+
+~~~java
+import br.com.models;
+
+void main() {
+    Pessoa usuario1 = new Pessoa();
+    Pessoa usuario2 = new Pessoa("Alex", 41);
+
+    // restante do código...
+}
+~~~
+
+## Herança/Generalização
+
+Para evitar redundâncias no código-fonte, cria-se uma única classe (que chamamos de **superclasse** ou **classe-pai**) para reunir atributos e métodos comuns a mais de uma classe. Isso é chamado de **herança** ou **Generalização**.
+
+Exemplo:
+
+#### Estrutura de diretórios
+```
+src/
+├── br/
+│   └── com/
+│       └── models/
+│           ├── Pessoa.java
+│           ├── PessoaFisica.java
+│           └── PessoaJuridica.java
+└── App.java
+
+```
+[![Herança](../img/heranca.svg)](https://www.readmecodegen.com/file-tree/create-folder-structure-online)
+
+#### Pessoa.java
+~~~java
+package br.com.models;
+
+public class Pessoa {
+    public String email;
+    public String telefone;
+
+    public Pessoa() {}
+
+    public String cumprimentar(String nome) {
+        return "Olá " + nome + ", prazer em conhecer!";
+    }
+}
+~~~
+
+#### PessoaFisica.java
+~~~java
+package br.com.models;
+
+// classe que herda de Pessoa
+public class PessoaFisica extends Pessoa {
+    public String nome;
+    public String cpf;
+}
+~~~
+
+#### PessoaJuridica.java
+~~~java
+package br.com.models;
+
+// classe que herda de Pessoa
+public class PessoaJuridica extends Pessoa {
+    public String nomeFantasia;
+    public String razaoSoccial;
+    public String cnpj;
+}
+~~~
+
+#### App.java
+~~~java
+import br.com.models.PessoaFisica;
+import br.com.models.PessoaJuridica;
+
+void main() {
+    PessoaFisica usuario = new PessoaFisica();
+    PessoaJuridica empresa = new PessoaJuridica();
+
+    usuario.nome = IO.readln("Informe o nome do usuário: ");
+    usuario.cpf = IO.readln("Informe o CPF do usuário: ");
+    usuario.email = IO.readln("Informe o e-mail do usuário: ");
+    usuario.telefone = IO.readln("Informe o telefone do usuário: ");
+
+    empresa.razaoSocial = IO.readln("Informe a razão social da empresa: ");
+    empresa.nomeFantasia = IO.readln("Informe o nome da empresa: ");
+    empresa.cnpj = IO.readln("Informe o CNPJ da empresa: ");
+    empresa.email = IO.readln("Informe o e-mail da empresa: ");
+    empresa.telefone = IO.readln("Informe o telefone da empresa: ");
+
+    IO.println("Nome do usuário: " + usuario.nome);
+    IO.println("CPF do usuário: " + usuario.cpf);
+    IO.println("E-mail do usuário: " + usuario.email);
+    IO.println("Telefone do usuário: " + usuario.telefone);
+
+    IO.println("Razão Social da empresa: " + usuario.empresa);
+    IO.println("Nome da empresa: " + usuario.nomeFantasia);
+    IO.println("CNPJ da empresa: " + usuario.cnpj);
+    IO.println("E-mail da empresa: " + usuario.email);
+    IO.println("Telefone da empresa: " + usuario.telefone);
+
+    usuario.cumprimentar(empresa.nomeFantasia);
+    empresa.cumprimentar(usuario.nome);
+}
+~~~
