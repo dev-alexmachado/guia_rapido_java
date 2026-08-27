@@ -22,6 +22,11 @@
 6. [Abstração](#abstração)
 7. [Encapsulamento](#encapsulamento)<br>
     7.1 [Modificadores de acesso](#modificadores-de-acesso)<br>
+8. [Relação entre Classes](#relação-entre-classes)<br>
+    8.1 [Associação](#associação)<br>
+    8.2 [Composição](#composição)<br>
+    8.3 [Agregação](#agregação)<br>
+    8.4 [Depedência](#depedência)<br>
 
 
 ## Classes Java
@@ -850,4 +855,175 @@ void main() {
     IO.println("Idade: " + usuario.getIdade() + " anos");
     IO.println("Altura: " + usuario.getAltura() + " metros");
 }
+~~~
+
+## Relação entre Classes
+
+### Associação
+
+> [!NOTE]
+> Na associação, as classes possuem relação entre si, mas podem existir de forma independente uma da outra.
+
+Exemplo de associação entre uma classe `Endereco` e `Pessoa`:
+
+#### Diagrama de Classes
+~~~mermaid
+classDiagram
+    class Endereco {
+        -String rua
+        -String cidade
+        +obterEndereco() String
+    }
+    class Pessoa {
+        -String nome
+        -Endereco endereco
+        +apresentar() void
+        +trocarEndereco(Endereco novoEndereco) void
+    }
+
+    Pessoa --> Endereco : possui
+~~~
+
+#### Código-fonte Endereco.java
+
+~~~java
+package br.com.models;
+
+public class Endereco {
+    private String rua;
+    private String cidade;
+
+    public Endereco() {}
+
+    public String getRua() {
+        return this.rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getCidade() {
+        return this.cidade = cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String obterEndereco() {
+        return this.endereco + ", " + this.cidade;
+    }
+}
+~~~
+
+#### Código-fonte Pessoa.java
+~~~java
+package br.com.models;
+
+public class Pessoa {
+    private String nome;
+    private Endereco endereco;
+
+    public Pessoa() {}
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Endereco getEndereco() {
+        return this.endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public void apresentar() {
+        IO.println("Nome: " + this.nome);
+        IO.println("Endereço: " + this.endereco.obterEndereco());
+    }
+
+    public void trocarEndereco(Endereco novoEndereco) {
+        this.endereco = novoEndereco;
+    }
+}
+~~~
+
+### Composição
+
+> [!NOTE]
+> Na composição, obrigatoriamente um dos atributos de uma classe é um objeto de outra classe. Nesse caso, há uma dependência de uma das classes em relação à outra.
+> Uma classe possui outra classe como parte essencial dela. Se o objeto principal for destruído, o objeto da outra classe também perde sentido.
+
+Exemplo de composição entre as classes `Motor` e `Carro`:
+
+#### Fluxograma
+~~~mermaid
+classDiagram
+    class Motor {
+        -int potencia
+        +info() String
+    }
+
+    class Carro {
+        -String modelo
+        -Motor motor
+        +detalhes() String
+    }
+
+    Carro "1" *-- "1" Motor : composto por
+~~~
+
+## Agregação
+
+> [!NOTE]
+> Na agregação, uma classe possui outra classe, mas essa outra classe pode existir independentemente.
+
+Exemplo de agregação entre as classes `Departamento` e `Empresa`:
+
+#### Fluxograma
+~~~mermaid
+classDiagram
+    class Departamento {
+        -String nome
+        +get_nome() String
+    }
+
+    class Empresa {
+        -String nome
+        -Departamento departamento
+        +detalhes() String
+    }
+
+    Empresa "1" o-- "1" Departamento : possui
+
+~~~
+
+### Depedência
+
+> [!NOTE]
+> Na dependência, uma classe utiliza outra classe temporariamente, mas não a mantém como atributo principal.
+
+Exemplo de dependência entre as classes `Calculadora` e `Pedido`:
+
+#### Fluxograma
+~~~mermaid
+classDiagram
+    class Calculadora {
+        +somar(int a, int b) int
+    }
+
+    class Pedido {
+        -int valor1
+        -int valor2
+        +calcular_total() int
+    }
+
+    Pedido ..> Calculadora : usa
+    
 ~~~
