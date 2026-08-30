@@ -9,6 +9,7 @@
     <img alt="Static Badge" src="https://img.shields.io/badge/21-f00?style=plastic&logo=java&logoColor=fff&label=Java&labelColor=007396">
     <img alt="Static Badge" src="https://img.shields.io/badge/25-ED8B00?style=plastic&logo=java&logoColor=fff&label=Java&labelColor=007396">
     <img alt="Static Badge" src="https://img.shields.io/badge/4.1.1-fff?style=plastic&logo=spring&logoColor=fff&label=Spring&labelColor=6DB33F">
+    <img alt="Static Badge" src="https://img.shields.io/badge/8.4.0-F29111?style=plastic&logo=mysql&logoColor=fff&label=MySQL&labelColor=00758F">
 </p>
 
 >[!IMPORTANT]
