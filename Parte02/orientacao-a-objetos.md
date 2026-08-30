@@ -22,11 +22,12 @@
 6. [Abstração](#abstração)
 7. [Encapsulamento](#encapsulamento)<br>
     7.1 [Modificadores de acesso](#modificadores-de-acesso)<br>
-8. [Relação entre Classes](#relação-entre-classes)<br>
-    8.1 [Associação](#associação)<br>
-    8.2 [Composição](#composição)<br>
-    8.3 [Agregação](#agregação)<br>
-    8.4 [Depedência](#depedência)<br>
+8. [Interface](#interface)
+9. [Relação entre Classes](#relação-entre-classes)<br>
+    9.1 [Associação](#associação)<br>
+    9.2 [Composição](#composição)<br>
+    9.3 [Agregação](#agregação)<br>
+    9.4 [Depedência](#depedência)<br>
 
 
 ## Classes Java
@@ -856,6 +857,124 @@ void main() {
     IO.println("Altura: " + usuario.getAltura() + " metros");
 }
 ~~~
+
+## Interface
+
+Interface é como se fosse um contrato que uma classe precisa seguir para ser instanciada.
+
+> [!IMPORTANT]
+> O uso da Interface é importante pois é ela quem garante que um sistema terá obrigatoriamente as regras de negócio implementadas no código-fonte.
+
+#### Diagrama de Classes
+~~~mermaid
+classDiagram
+    class IConta {
+        <<interface>>
+        +consultarDados() void
+        +depositar(double valor) double
+        +sacar(double valor) double
+    }
+
+    class Conta {
+        -String titular
+        -String agencia
+        -String nConta
+        -double saldo
+    }
+
+    IConta <|.. Conta
+~~~
+
+#### Para criar uma interface
+
+1. Botão direito em cima do **package**;
+2. Clique com o botão direito do mouse em cima do **package** e escolha **New Java file -> Interface...**;
+3. Digite no alto da janela do VSCode o nome da Interface desejada.
+
+> [!TIP]
+> Crie um package específico para a Interface. De preferência dentro de `.com` chamada `repository`. Dentro da `repository` que você cria a interface.
+
+Vamos criar uma interface chamada `IConta`.
+
+#### Código-fonte IConta.java
+~~~java
+package br.com.repository;
+
+public interface IConta {
+    public void consultarDados();
+    public double depositar(double valor);
+    public double sacar(double valor);
+}
+~~~
+
+#### Código-fonte Conta.java
+~~~java
+package br.com.models;
+
+import br.com.repository.IConta;
+
+public class Conta implements IConta {
+    private String titular;
+    private String agencia;
+    private String nConta;
+    private double saldo;
+
+    public Conta() {}
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public String getAgencia() {
+        return this.agencia;
+    }
+
+    public void setAgencia(String agencia) {
+        this.agencia = agencia;
+    }
+    public String getNConta() {
+        return this.nConta;
+    }
+
+    public void setNConta(String nConta) {
+        this.nConta = nConta;
+    }
+    public double getSaldo() {
+        return this.saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    @Override
+    public void consultarDados() {
+        IO.println("Nome: " + this.nome);
+        IO.println("Agência: " + this.agencia);
+        IO.println("Conta: " + this.nConta);
+        IO.println("Saldo: R$ " + String.format("%.2f", this.nome));
+    }
+
+    @Override
+    public double depositar(double valor) {
+        this.saldo += valor;
+        return this.saldo;
+    }
+
+    @Override
+    public double sacar(double valor) {
+        this.saldo -= valor;
+        return this.saldo;
+    }
+}
+~~~
+
+> [!WARNING]
+> Se a regra de negócio diz que o sistema tem que ter uma consulta de dados da conta, uma função de depositar e outra de sacar, a interface garante que o sistema não seja entregue sem essas funcionalidades sob pena do programa não funcionar.
+
 
 ## Relação entre Classes
 

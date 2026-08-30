@@ -2,10 +2,17 @@
 
 <p align="center">
     <img src="img/icons8-java-100.png" alt="Java logo">
+    <br>
+    <br>
+    <img alt="Static Badge" src="https://img.shields.io/badge/10-fff?style=plastic&logo=windows&logoColor=646464&label=Windows&labelColor=0078D6">
+    <img alt="Static Badge" src="https://img.shields.io/badge/1.8-fff?style=plastic&logo=java&logoColor=fff&label=Java&labelColor=f00">
+    <img alt="Static Badge" src="https://img.shields.io/badge/21-f00?style=plastic&logo=java&logoColor=fff&label=Java&labelColor=007396">
+    <img alt="Static Badge" src="https://img.shields.io/badge/25-ED8B00?style=plastic&logo=java&logoColor=fff&label=Java&labelColor=007396">
+    <img alt="Static Badge" src="https://img.shields.io/badge/4.1.1-fff?style=plastic&logo=spring&logoColor=fff&label=Spring&labelColor=6DB33F">
 </p>
 
 >[!IMPORTANT]
-> Esse tutorial é destinado para máquinas com o Sistema Operacional **Windows 10** ou superior e com o **JDK 25** ou superior.
+> Esse tutorial é destinado para máquinas com o Sistema Operacional **Windows 10** ou superior e com o **JDK 1.8** ou **JDK 25** ou superior.
 
 ## Sumário
 
