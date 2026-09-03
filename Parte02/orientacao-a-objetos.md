@@ -1098,6 +1098,43 @@ classDiagram
     Carro "1" *-- "1" Motor : composto por
 ~~~
 
+### Código-fonte Motor.java
+
+~~~java
+package br.com.models;
+
+public class Motor {
+    private int potencia;
+
+    public Motor() {}
+
+    public int getPotencia() {
+        return potencia;
+    }
+
+    public void setPotencia(int potencia) {
+        this.potencia = potencia;
+    }
+
+    public String info() {
+        return "Motor de " + this.potencia + " cv.";
+    }
+}
+~~~
+
+### Código-fonte Carro.java
+
+~~~java
+package br.com.models;
+
+public class Carro {
+    private String modelo;
+    private Motor motor;
+}
+
+// TODO: continuar
+~~~
+
 ## Agregação
 
 > [!NOTE]
